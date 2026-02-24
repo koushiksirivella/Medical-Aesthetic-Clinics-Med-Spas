@@ -150,14 +150,25 @@ export default function DemoApplicationPage() {
     if (!validate()) return
 
     setSubmitting(true)
-    // Simulate brief processing
-    await new Promise(r => setTimeout(r, 900))
+
+    try {
+      await fetch(
+        'https://script.google.com/macros/s/AKfycbw2i98DeecOk6dWKZGOiyYiSedv19KrAGFLfAhy-eVok8WC6WJs2Fp86jMH2gKfrNvAqw/exec',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form),
+        }
+      )
+    } catch {
+      // Continue regardless — don't block the user
+    }
 
     if (form.leadVolume === '0–20') {
       setRejected(true)
       setSubmitting(false)
     } else {
-      // Store form data in sessionStorage for calendar page
       sessionStorage.setItem('demo_applicant', JSON.stringify(form))
       router.push('/demo/calendar')
     }
