@@ -2,13 +2,21 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { CheckCircle2, Clock, Shield } from 'lucide-react'
+import { CheckCircle2, Shield, Clock, CalendarDays, ArrowRight, Users } from 'lucide-react'
+import { GoldShinyButton } from '@/components/ui/shiny-button'
 
 const EXPECTATIONS = [
   'Review monthly lead volume',
   'Calculate revenue recovery opportunity',
   'Walk through automation architecture',
   'Define 72-hour deployment plan',
+]
+
+const DETAILS = [
+  { icon: Clock,        label: 'Duration',  value: '30 minutes' },
+  { icon: CalendarDays, label: 'Format',    value: 'Google Meet / Zoom' },
+  { icon: Users,        label: 'With',      value: 'Koushik — Founder' },
+  { icon: Shield,       label: 'Guarantee', value: 'No pitch. Pure strategy.' },
 ]
 
 export default function DemoCalendarPage() {
@@ -62,45 +70,72 @@ export default function DemoCalendarPage() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1fr_340px] gap-10 items-start">
+        <div className="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
 
-          {/* ── Calendar embed ───────────────────────────────────────────────── */}
+          {/* ── Main booking card ─────────────────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="border border-[rgba(198,167,94,0.18)] rounded-2xl bg-[#1A1A1A] overflow-hidden"
           >
-            {/* Calendly placeholder — swap src once you have your Calendly link */}
-            <div className="w-full h-[600px] flex flex-col items-center justify-center gap-5 p-10 text-center">
-              <div className="w-14 h-14 rounded-full border border-[rgba(198,167,94,0.3)] flex items-center justify-center">
-                <Clock size={24} className="text-[#C6A75E]" />
+            {/* Card header */}
+            <div className="px-8 pt-8 pb-6 border-b border-[rgba(198,167,94,0.12)]">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-[rgba(198,167,94,0.12)] border border-[rgba(198,167,94,0.2)] flex items-center justify-center">
+                  <CalendarDays size={18} className="text-[#C6A75E]" />
+                </div>
+                <div>
+                  <p className="text-[#F8F6F3]/90 font-semibold text-sm">Revenue Strategy Session</p>
+                  <p className="text-[#F8F6F3]/40 text-xs">Koushik AI Automation — Private Demo</p>
+                </div>
               </div>
-              <div>
-                <p className="text-[#F8F6F3] font-display text-lg mb-2">Calendar Embed</p>
-                <p className="text-[#F8F6F3]/40 text-sm leading-relaxed max-w-xs">
-                  Paste your Calendly (or Cal.com) embed URL here to activate live booking.
-                </p>
+
+              {/* Session detail pills */}
+              <div className="grid grid-cols-2 gap-3">
+                {DETAILS.map(({ icon: Icon, label, value }, i) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 + i * 0.06, duration: 0.45 }}
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-[rgba(198,167,94,0.1)] bg-[rgba(198,167,94,0.04)]"
+                  >
+                    <Icon size={14} className="text-[#C6A75E] shrink-0" />
+                    <div>
+                      <p className="text-[8px] uppercase tracking-[0.15em] text-[#C6A75E]/60 font-medium leading-none mb-0.5">{label}</p>
+                      <p className="text-[#F8F6F3]/75 text-xs font-medium">{value}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              {/* Uncomment and replace URL when ready:
-              <iframe
-                src="https://calendly.com/YOUR_LINK/30min"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                className="absolute inset-0 w-full h-full"
-              />
-              */}
-              <a
-                href="/demo/confirmation"
-                className="mt-2 inline-flex items-center gap-2 bg-[#C6A75E] text-[#111111] font-semibold text-sm px-6 py-3 rounded-xl
-                  hover:bg-[#A88A45] active:scale-[0.98]
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A75E]
-                  transition-colors duration-200"
-                style={{ boxShadow: '0 4px 24px rgba(198,167,94,0.25)' }}
+            </div>
+
+            {/* Booking CTA */}
+            <div className="px-8 py-8 text-center">
+              <p className="text-[#F8F6F3]/45 text-xs leading-relaxed mb-6 max-w-sm mx-auto">
+                Click below to open the booking calendar and choose a time that works for you. The call is free with no obligation.
+              </p>
+
+              <GoldShinyButton
+                href="https://calendly.com/koushiksirivella/30min"
+                className="px-8 py-4 rounded-full font-semibold text-sm tracking-wide"
               >
-                Preview Confirmation Page →
-              </a>
+                Choose Your Time Slot
+                <ArrowRight size={15} />
+              </GoldShinyButton>
+
+              <p className="mt-5 text-[#F8F6F3]/25 text-[11px]">
+                Opens in a new tab · Powered by Calendly
+              </p>
+            </div>
+
+            {/* Bottom guarantee strip */}
+            <div className="px-8 py-4 border-t border-[rgba(198,167,94,0.1)] bg-[rgba(198,167,94,0.03)] flex items-center justify-center gap-2">
+              <Shield size={12} className="text-[#C6A75E]/50" />
+              <span className="text-[10px] text-[#F8F6F3]/35 uppercase tracking-widest">
+                No sales pitch · Pure analysis · Instant confirmation
+              </span>
             </div>
           </motion.div>
 
@@ -129,6 +164,18 @@ export default function DemoCalendarPage() {
                   </motion.li>
                 ))}
               </ul>
+            </div>
+
+            {/* Who you're meeting */}
+            <div className="border border-[rgba(198,167,94,0.15)] rounded-2xl bg-[rgba(198,167,94,0.04)] p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <Users size={13} className="text-[#C6A75E]" />
+                <span className="text-[10px] uppercase tracking-widest text-[#C6A75E] font-medium">Who You're Meeting</span>
+              </div>
+              <p className="text-[#F8F6F3]/80 text-sm font-medium mb-1">Koushik Sirivella</p>
+              <p className="text-[#F8F6F3]/40 text-xs leading-relaxed">
+                Founder · AI Automation Specialist for Medical Aesthetic Clinics
+              </p>
             </div>
 
             <div className="border border-[rgba(198,167,94,0.15)] rounded-2xl bg-[rgba(198,167,94,0.04)] p-5">

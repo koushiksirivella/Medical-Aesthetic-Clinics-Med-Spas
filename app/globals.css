@@ -155,3 +155,168 @@
 ::-webkit-scrollbar-track { background: #111111; }
 ::-webkit-scrollbar-thumb { background: rgba(198,167,94,0.3); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #C6A75E; }
+
+/* ── Shiny Gold Button ──────────────────────────────────────────────────────── */
+@property --sgb-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --sgb-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --sgb-percent {
+  syntax: "<percentage>";
+  initial-value: 5%;
+  inherits: false;
+}
+
+.shiny-gold-btn {
+  --sgb-duration: 3s;
+  --sgb-transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  -webkit-appearance: none;
+  appearance: none;
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent !important;
+  color: #111111 !important;
+  background:
+    linear-gradient(#C6A75E, #C6A75E) padding-box,
+    conic-gradient(
+      from calc(var(--sgb-angle) - var(--sgb-angle-offset)),
+      transparent,
+      rgba(255,255,255,0.9) var(--sgb-percent),
+      white calc(var(--sgb-percent) * 2),
+      rgba(255,255,255,0.9) calc(var(--sgb-percent) * 3),
+      transparent calc(var(--sgb-percent) * 4)
+    ) border-box !important;
+  box-shadow: inset 0 0 0 1px #A88A45, 0 4px 24px rgba(198,167,94,0.25), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  transition-property: --sgb-angle-offset, --sgb-percent;
+  transition-duration: var(--sgb-transition);
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.shiny-gold-btn::before,
+.shiny-gold-btn::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: 0;
+}
+
+.shiny-gold-btn:active {
+  translate: 0 1px;
+}
+
+/* Dots pattern */
+.shiny-gold-btn::before {
+  --pos: 2px;
+  --space: calc(var(--pos) * 2);
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  background: radial-gradient(
+    circle at var(--pos) var(--pos),
+    rgba(255,255,255,0.8) calc(var(--pos) / 4),
+    transparent 0
+  ) padding-box;
+  background-size: var(--space) var(--space);
+  background-repeat: space;
+  mask-image: conic-gradient(
+    from calc(var(--sgb-angle) + 45deg),
+    black,
+    transparent 10% 90%,
+    black
+  );
+  border-radius: inherit;
+  opacity: 0.45;
+}
+
+/* Inner shimmer */
+.shiny-gold-btn::after {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, rgba(255,255,255,0.5), transparent);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+}
+
+/* Inner text span */
+.shiny-gold-btn .shiny-inner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.shiny-gold-btn .shiny-inner::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  width: calc(100% + 1rem);
+  height: calc(100% + 1rem);
+  box-shadow: inset 0 -1ex 2rem 4px rgba(255,255,255,0.35);
+  opacity: 0;
+  transition: opacity var(--sgb-transition);
+  animation: calc(var(--sgb-duration) * 1.5) sgb-breathe linear infinite;
+}
+
+/* Rotation animations */
+.shiny-gold-btn,
+.shiny-gold-btn::before {
+  animation:
+    sgb-rotate var(--sgb-duration) linear infinite,
+    sgb-rotate calc(var(--sgb-duration) / 0.4) linear infinite reverse paused;
+  animation-composition: add;
+}
+.shiny-gold-btn::after {
+  animation:
+    sgb-shimmer var(--sgb-duration) linear infinite,
+    sgb-shimmer calc(var(--sgb-duration) / 0.4) linear infinite reverse paused;
+  animation-composition: add;
+}
+
+/* Hover / focus */
+.shiny-gold-btn:is(:hover, :focus-visible) {
+  --sgb-percent: 20%;
+  --sgb-angle-offset: 95deg;
+  background:
+    linear-gradient(#A88A45, #A88A45) padding-box,
+    conic-gradient(
+      from calc(var(--sgb-angle) - var(--sgb-angle-offset)),
+      transparent,
+      rgba(255,255,255,0.75) var(--sgb-percent),
+      rgba(255,255,255,0.9) calc(var(--sgb-percent) * 2),
+      rgba(255,255,255,0.75) calc(var(--sgb-percent) * 3),
+      transparent calc(var(--sgb-percent) * 4)
+    ) border-box;
+}
+.shiny-gold-btn:is(:hover, :focus-visible),
+.shiny-gold-btn:is(:hover, :focus-visible)::before,
+.shiny-gold-btn:is(:hover, :focus-visible)::after {
+  animation-play-state: running;
+}
+.shiny-gold-btn:is(:hover, :focus-visible) .shiny-inner::before {
+  opacity: 1;
+}
+
+@keyframes sgb-rotate { to { --sgb-angle: 360deg; } }
+@keyframes sgb-shimmer { to { rotate: 360deg; } }
+@keyframes sgb-breathe {
+  from, to { scale: 1; }
+  50% { scale: 1.2; }
+}

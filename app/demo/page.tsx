@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, CheckCircle2, ChevronDown, Shield } from 'lucide-react'
+import { GoldShinyButton } from '@/components/ui/shiny-button'
 
 const BULLETS = [
   'Personalized ROI Calculation',
@@ -133,7 +134,6 @@ export default function DemoApplicationPage() {
   function validate(): boolean {
     const e: Partial<Record<keyof FormData, string>> = {}
     if (!form.clinicName.trim())    e.clinicName       = 'Required'
-    if (!form.websiteUrl.trim())    e.websiteUrl       = 'Required'
     if (!form.leadVolume)           e.leadVolume        = 'Required'
     if (!form.treatmentValue)       e.treatmentValue   = 'Required'
     if (!form.responseMethod)       e.responseMethod   = 'Required'
@@ -305,13 +305,11 @@ export default function DemoApplicationPage() {
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <TextField
-                        label="Website URL"
+                        label="Website URL (Optional)"
                         value={form.websiteUrl}
                         onChange={set('websiteUrl')}
                         placeholder="www.yourclinic.com"
-                        required
                       />
-                      {errors.websiteUrl && <p className="text-red-400 text-xs">{errors.websiteUrl}</p>}
                     </div>
                   </div>
 
@@ -402,15 +400,13 @@ export default function DemoApplicationPage() {
                   </div>
 
                   {/* Submit */}
-                  <button
+                  <GoldShinyButton
                     type="submit"
                     disabled={submitting}
-                    className="w-full mt-2 relative overflow-hidden flex items-center justify-center gap-2.5 bg-[#C6A75E] text-[#111111] font-semibold text-sm tracking-wide py-4 rounded-xl
-                      hover:bg-[#A88A45] active:scale-[0.98]
+                    className="w-full mt-2 font-semibold text-sm tracking-wide py-4 rounded-xl
+                      active:scale-[0.98]
                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A75E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A]
-                      disabled:opacity-60 disabled:cursor-not-allowed
-                      transition-colors duration-200"
-                    style={{ boxShadow: '0 4px 24px rgba(198,167,94,0.25), 0 1px 0 rgba(255,255,255,0.1) inset' }}
+                      disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {submitting ? (
                       <>
@@ -423,7 +419,7 @@ export default function DemoApplicationPage() {
                         <ArrowRight size={16} />
                       </>
                     )}
-                  </button>
+                  </GoldShinyButton>
 
                   <p className="text-center text-[#F8F6F3]/25 text-[10px] tracking-wide">
                     Your information is kept strictly confidential and never shared.
