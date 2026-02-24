@@ -898,7 +898,7 @@ export default function LandingPage() {
 
             {/* framework.A.primary_cta: "Book Private Demo" | secondary: "Calculate My Revenue Loss" */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <LiquidButton href="mailto:hello@koushikautomation.com" variant="primary" className="text-base px-10 py-5">
+              <LiquidButton href="/demo" variant="primary" className="text-base px-10 py-5">
                 Book Private Demo
                 <ArrowRight size={18} />
               </LiquidButton>
@@ -908,9 +908,44 @@ export default function LandingPage() {
               </LiquidButton>
             </div>
 
-            <p className="mt-8 text-[#F8F6F3]/28 text-sm">
+            <p className="mt-8 mb-16 text-[#F8F6F3]/28 text-sm">
               No commitment. No sales pressure. Just a clear look at your revenue recovery opportunity.
             </p>
+
+            {/* ── Calendar embed ── */}
+            <div className="max-w-2xl mx-auto">
+                <div className="flex items-center gap-3 justify-center mb-6">
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[rgba(198,167,94,0.25)]" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#C6A75E]/60 font-medium whitespace-nowrap">
+                    Or Book Directly
+                  </span>
+                  <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[rgba(198,167,94,0.25)]" />
+                </div>
+                <div
+                  className="rounded-2xl overflow-hidden border border-[rgba(198,167,94,0.18)] bg-[#1A1A1A]"
+                  style={{ minHeight: '500px' }}
+                >
+                  {/* ── Replace the src below with your Calendly / Cal.com link when ready ── */}
+                  {/* <iframe
+                    src="https://calendly.com/YOUR_LINK/30min"
+                    width="100%"
+                    height="500"
+                    frameBorder="0"
+                  /> */}
+                  <div className="flex flex-col items-center justify-center h-[500px] gap-4 text-center px-8">
+                    <div
+                      className="w-14 h-14 rounded-full flex items-center justify-center"
+                      style={{ background: 'rgba(198,167,94,0.1)', boxShadow: '0 0 0 1px rgba(198,167,94,0.2)' }}
+                    >
+                      <Calendar size={24} className="text-[#C6A75E]" />
+                    </div>
+                    <p className="text-[#F8F6F3] font-display text-lg">Calendar Booking</p>
+                    <p className="text-[#F8F6F3]/35 text-sm max-w-xs leading-relaxed">
+                      Paste your Calendly or Cal.com link here to activate direct booking.
+                    </p>
+                  </div>
+                </div>
+            </div>
           </FadeIn>
         </div>
       </section>
