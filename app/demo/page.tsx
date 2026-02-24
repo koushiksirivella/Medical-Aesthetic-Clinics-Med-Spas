@@ -198,9 +198,9 @@ export default function DemoApplicationPage() {
           >
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(198,167,94,0.3)] bg-[rgba(198,167,94,0.06)] mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E57373] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C6A75E] animate-pulse" />
               <span className="text-[10px] uppercase tracking-[0.18em] text-[#C6A75E] font-medium">
-                3 Spots Remaining This Month
+                Private Access Only
               </span>
             </div>
 
@@ -232,10 +232,10 @@ export default function DemoApplicationPage() {
             <div className="border border-[rgba(198,167,94,0.15)] rounded-xl p-5 bg-[rgba(198,167,94,0.04)]">
               <div className="flex items-center gap-2 mb-2">
                 <Shield size={13} className="text-[#C6A75E]" />
-                <span className="text-[10px] uppercase tracking-widest text-[#C6A75E] font-medium">Limited Availability</span>
+                <span className="text-[10px] uppercase tracking-widest text-[#C6A75E] font-medium">No Obligation</span>
               </div>
               <p className="text-[#F8F6F3]/45 text-xs leading-relaxed">
-                We accept a limited number of clinics each month to ensure every session gets full attention. Once slots fill, the next opening is 30+ days out.
+                This session is completely free. We will walk through your clinic's missed revenue and show you exactly how the automation works.
               </p>
             </div>
           </motion.div>
