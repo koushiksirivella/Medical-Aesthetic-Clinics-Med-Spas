@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2, ChevronDown, Shield } from 'lucide-react'
 import { GoldShinyButton } from '@/components/ui/shiny-button'
 
@@ -123,7 +123,6 @@ function RadioGroup({
 export default function DemoApplicationPage() {
   const router = useRouter()
   const [form, setForm] = useState<FormData>(EMPTY)
-  const [rejected, setRejected] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
 
@@ -165,13 +164,8 @@ export default function DemoApplicationPage() {
       // Continue regardless — don't block the user
     }
 
-    if (form.leadVolume === '0–20') {
-      setRejected(true)
-      setSubmitting(false)
-    } else {
-      sessionStorage.setItem('demo_applicant', JSON.stringify(form))
-      router.push('/demo/calendar')
-    }
+    sessionStorage.setItem('demo_applicant', JSON.stringify(form))
+    router.push('/demo/calendar')
   }
 
   return (
@@ -204,9 +198,9 @@ export default function DemoApplicationPage() {
           >
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(198,167,94,0.3)] bg-[rgba(198,167,94,0.06)] mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C6A75E] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E57373] animate-pulse" />
               <span className="text-[10px] uppercase tracking-[0.18em] text-[#C6A75E] font-medium">
-                Private Access Only
+                3 Spots Remaining This Month
               </span>
             </div>
 
@@ -238,10 +232,10 @@ export default function DemoApplicationPage() {
             <div className="border border-[rgba(198,167,94,0.15)] rounded-xl p-5 bg-[rgba(198,167,94,0.04)]">
               <div className="flex items-center gap-2 mb-2">
                 <Shield size={13} className="text-[#C6A75E]" />
-                <span className="text-[10px] uppercase tracking-widest text-[#C6A75E] font-medium">Qualification Notice</span>
+                <span className="text-[10px] uppercase tracking-widest text-[#C6A75E] font-medium">Limited Availability</span>
               </div>
               <p className="text-[#F8F6F3]/45 text-xs leading-relaxed">
-                This session is reserved for clinics generating 20+ leads per month. We pre-qualify every applicant to ensure the session delivers real value.
+                We accept a limited number of clinics each month to ensure every session gets full attention. Once slots fill, the next opening is 30+ days out.
               </p>
             </div>
           </motion.div>
@@ -252,40 +246,10 @@ export default function DemoApplicationPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <AnimatePresence mode="wait">
-              {rejected ? (
-                /* Rejection state */
-                <motion.div
-                  key="rejected"
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="border border-[rgba(198,167,94,0.18)] rounded-2xl bg-[#1A1A1A] p-10 text-center"
-                >
-                  <div className="w-12 h-12 rounded-full border border-[rgba(198,167,94,0.3)] flex items-center justify-center mx-auto mb-6">
-                    <Shield size={22} className="text-[#C6A75E]" />
-                  </div>
-                  <h2 className="font-display text-xl text-[#F8F6F3] mb-3">
-                    Not a Fit — Yet
-                  </h2>
-                  <p className="text-[#F8F6F3]/50 text-sm leading-relaxed max-w-xs mx-auto">
-                    We're currently prioritizing clinics generating at least 20 monthly inquiries. As your lead volume grows, reach back out — we'd love to work with you.
-                  </p>
-                  <button
-                    onClick={() => { setRejected(false); setForm(EMPTY) }}
-                    className="mt-8 text-xs text-[#C6A75E] hover:text-[#A88A45] transition-colors duration-200 tracking-widest uppercase"
-                  >
-                    ← Update My Application
-                  </button>
-                </motion.div>
-              ) : (
-                /* Form state */
-                <motion.form
-                  key="form"
-                  onSubmit={handleSubmit}
-                  className="border border-[rgba(198,167,94,0.18)] rounded-2xl bg-[#1A1A1A] p-8 space-y-6"
-                >
+            <motion.form
+              onSubmit={handleSubmit}
+              className="border border-[rgba(198,167,94,0.18)] rounded-2xl bg-[#1A1A1A] p-8 space-y-6"
+            >
                   <div className="pb-4 border-b border-[rgba(198,167,94,0.1)]">
                     <h2 className="font-display text-xl text-[#F8F6F3] mb-1">Application Form</h2>
                     <p className="text-[#F8F6F3]/35 text-xs tracking-wide">All fields required</p>
@@ -424,9 +388,7 @@ export default function DemoApplicationPage() {
                   <p className="text-center text-[#F8F6F3]/25 text-[10px] tracking-wide">
                     Your information is kept strictly confidential and never shared.
                   </p>
-                </motion.form>
-              )}
-            </AnimatePresence>
+            </motion.form>
           </motion.div>
         </div>
       </div>
