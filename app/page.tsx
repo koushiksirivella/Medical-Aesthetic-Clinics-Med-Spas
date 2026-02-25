@@ -15,6 +15,7 @@ import { Card }        from '@/components/ui/card'
 import { LiquidButton }from '@/components/ui/liquid-button'
 import { GoldShinyButton } from '@/components/ui/shiny-button'
 import { BackgroundPaths } from '@/components/ui/background-paths'
+import { GlowingEffect } from '@/components/ui/glowing-effect'
 
 const ShaderAnimation = dynamic(
   () => import('@/components/ui/shader-animation').then(m => ({ default: m.ShaderAnimation })),
@@ -338,6 +339,7 @@ export default function LandingPage() {
               return (
                 <FadeIn key={i} delay={i * 0.08}>
                   <div className="relative group card-lift rounded-2xl p-8 border border-white/6 bg-gradient-to-b from-white/4 to-transparent overflow-hidden">
+                    <GlowingEffect spread={40} glow={false} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                       style={{ background: `radial-gradient(circle at 30% 30%, ${item.col}10, transparent 60%)` }}
@@ -574,9 +576,10 @@ export default function LandingPage() {
               return (
                 <FadeIn key={i} delay={i * 0.07}>
                   <div
-                    className="card-lift rounded-2xl p-7 border bg-gradient-to-b from-white/4 to-transparent"
+                    className="relative card-lift rounded-2xl p-7 border bg-gradient-to-b from-white/4 to-transparent overflow-hidden"
                     style={{ borderColor: `${item.col}22` }}
                   >
+                    <GlowingEffect spread={40} glow={false} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
                       style={{ background: `${item.col}15` }}>
                       <Icon size={20} style={{ color: item.col }} />
@@ -693,9 +696,10 @@ export default function LandingPage() {
               return (
                 <FadeIn key={i} delay={i * 0.08}>
                   <div
-                    className="group card-lift p-7 rounded-2xl border bg-gradient-to-b from-white/4 to-transparent hover:from-white/6 transition-all duration-300 cursor-pointer"
+                    className="relative group card-lift p-7 rounded-2xl border bg-gradient-to-b from-white/4 to-transparent hover:from-white/6 transition-all duration-300 cursor-pointer overflow-hidden"
                     style={{ borderColor: `${item.col}20` }}
                   >
+                    <GlowingEffect spread={40} glow={false} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
                     <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
                       style={{ background: `${item.col}15` }}>
                       <Icon size={22} style={{ color: item.col }} />

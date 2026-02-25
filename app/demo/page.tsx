@@ -13,7 +13,16 @@ const BULLETS = [
 ]
 
 const LEAD_VOLUME_OPTIONS = ['0–20', '20–50', '50–100', '100+']
-const TREATMENT_VALUE_OPTIONS = ['$500–$1,000', '$1,000–$2,500', '$2,500–$5,000', '$5,000+']
+const TREATMENT_VALUE_GROUPS = [
+  {
+    label: 'USD (United States)',
+    options: ['$500–$1,000', '$1,000–$2,500', '$2,500–$5,000', '$5,000+'],
+  },
+  {
+    label: 'INR (India)',
+    options: ['₹15,000–₹30,000', '₹30,000–₹60,000', '₹60,000–₹1,20,000', '₹1,20,000+'],
+  },
+]
 const RESPONSE_METHOD_OPTIONS = ['Receptionist', 'CRM Automation', 'Manual SMS', 'Not Structured']
 
 type FormData = {
@@ -60,6 +69,38 @@ function SelectField({
           <option value="" disabled className="text-[#F8F6F3]/40">Select…</option>
           {options.map(o => (
             <option key={o} value={o} className="bg-[#1A1A1A] text-[#F8F6F3]">{o}</option>
+          ))}
+        </select>
+        <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C6A75E] pointer-events-none" />
+      </div>
+    </div>
+  )
+}
+
+function GroupedSelectField({
+  label, value, groups, onChange, required,
+}: {
+  label: string; value: string; groups: { label: string; options: string[] }[]; onChange: (v: string) => void; required?: boolean
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label className="text-xs uppercase tracking-widest text-[#C6A75E] font-medium">
+        {label}{required && <span className="text-[#C6A75E] ml-0.5">*</span>}
+      </label>
+      <div className="relative">
+        <select
+          required={required}
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          className="w-full appearance-none bg-[#1A1A1A] border border-[rgba(198,167,94,0.18)] rounded-lg px-4 py-3 text-[#F8F6F3] text-sm focus:outline-none focus:border-[rgba(198,167,94,0.55)] focus:ring-1 focus:ring-[rgba(198,167,94,0.3)] transition-colors duration-200 cursor-pointer"
+        >
+          <option value="" disabled className="text-[#F8F6F3]/40">Select…</option>
+          {groups.map(group => (
+            <optgroup key={group.label} label={group.label} className="bg-[#1A1A1A] text-[#C6A75E]">
+              {group.options.map(o => (
+                <option key={o} value={o} className="bg-[#1A1A1A] text-[#F8F6F3]">{o}</option>
+              ))}
+            </optgroup>
           ))}
         </select>
         <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C6A75E] pointer-events-none" />
@@ -290,10 +331,10 @@ export default function DemoApplicationPage() {
                       {errors.leadVolume && <p className="text-red-400 text-xs">{errors.leadVolume}</p>}
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <SelectField
+                      <GroupedSelectField
                         label="Average Treatment Value"
                         value={form.treatmentValue}
-                        options={TREATMENT_VALUE_OPTIONS}
+                        groups={TREATMENT_VALUE_GROUPS}
                         onChange={set('treatmentValue')}
                         required
                       />
@@ -356,9 +397,10 @@ export default function DemoApplicationPage() {
                         value={form.phone}
                         onChange={set('phone')}
                         type="tel"
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+91 98765 43210"
                         required
                       />
+                      <p className="text-[#F8F6F3]/30 text-[10px] tracking-wide">India: +91 · US/International: +1 · include country code</p>
                       {errors.phone && <p className="text-red-400 text-xs">{errors.phone}</p>}
                     </div>
                   </div>
