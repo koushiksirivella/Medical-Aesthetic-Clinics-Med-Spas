@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Brand Assets",
+			"path": "../brand_assets"
+		}
+	],
+	"settings": {
+		"window.title": "Medical Aesthetic Clinic — Next.js",
+		"files.exclude": {
+			"node_modules": true,
+			".next": true,
+			"desktop.ini": true,
+			"*.code-workspace": true,
+			".git": true
+		}
+	}
+}

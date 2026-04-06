@@ -30,19 +30,7 @@ export function Header() {
       )}
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 lg:px-8">
-        {/* Wordmark */}
-        <a href="#hero" className="group flex items-center gap-2.5">
-          <span
-            className="text-lg font-bold tracking-[-0.02em]"
-            style={{ fontFamily: 'var(--font-playfair, "Playfair Display", serif)' }}
-          >
-            <span className="text-[#C6A75E]">Koushik</span>
-            <span className="text-[#F8F6F3]"> AI</span>
-          </span>
-          <span className="hidden sm:inline-flex items-center rounded-full border border-[#C6A75E]/30 bg-[#C6A75E]/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-[#C6A75E]">
-            Automation
-          </span>
-        </a>
+
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-1 md:flex">

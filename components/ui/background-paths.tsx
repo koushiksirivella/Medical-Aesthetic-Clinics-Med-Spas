@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-function FloatingPaths({ position }: { position: number }) {
+function FloatingPaths({ position, color, maxOpacity }: { position: number; color?: string; maxOpacity?: number }) {
+  const cap = maxOpacity ?? 1
   const paths = Array.from({ length: 36 }, (_, i) => ({
     id: i,
     d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
@@ -19,7 +20,8 @@ function FloatingPaths({ position }: { position: number }) {
   return (
     <div className="absolute inset-0 pointer-events-none">
       <svg
-        className="w-full h-full text-white"
+        className="w-full h-full"
+        style={{ color: color || "white" }}
         viewBox="0 0 696 316"
         fill="none"
       >
@@ -30,11 +32,11 @@ function FloatingPaths({ position }: { position: number }) {
             d={path.d}
             stroke="currentColor"
             strokeWidth={path.width}
-            strokeOpacity={0.1 + path.id * 0.03}
-            initial={{ pathLength: 0.3, opacity: 0.6 }}
+            strokeOpacity={Math.min(0.1 + path.id * 0.03, cap)}
+            initial={{ pathLength: 0.3, opacity: Math.min(0.6, cap) }}
             animate={{
               pathLength: 1,
-              opacity: [0.3, 0.6, 0.3],
+              opacity: [Math.min(0.3, cap), Math.min(0.6, cap), Math.min(0.3, cap)],
               pathOffset: [0, 1, 0],
             }}
             transition={{
@@ -52,17 +54,21 @@ function FloatingPaths({ position }: { position: number }) {
 export function BackgroundPaths({
   title = "Background Paths",
   children,
+  pathColor,
+  pathOpacity,
 }: {
   title?: string;
   children?: React.ReactNode;
+  pathColor?: string;
+  pathOpacity?: number;
 }) {
   const words = title.split(" ");
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-neutral-950">
       <div className="absolute inset-0">
-        <FloatingPaths position={1} />
-        <FloatingPaths position={-1} />
+        <FloatingPaths position={1} color={pathColor} maxOpacity={pathOpacity} />
+        <FloatingPaths position={-1} color={pathColor} maxOpacity={pathOpacity} />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">

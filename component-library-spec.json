@@ -1,0 +1,1279 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "generated": "2025-07-14",
+    "purpose": "Complete machine-readable specification of the Medical Aesthetic Clinics component library, design system, and project assets. Any AI can use this file to understand, generate, and compose UI from these components.",
+    "how_to_use": "Each component entry documents its file path, exports, props (with types and defaults), dependencies, category, interactivity, and rendering notes. The design_system section documents all brand tokens, CSS variables, keyframe animations, and utility classes. Use this file to auto-generate pages, validate component usage, or understand the full project surface area."
+  },
+
+  "project": {
+    "name": "Medical Aesthetic Clinics / MedSpa",
+    "framework": "Next.js 16.1.6 (App Router)",
+    "react_version": "19.2.3",
+    "language": "TypeScript 5",
+    "styling": "Tailwind CSS v4 + inline CSS variables",
+    "animation_library": "Framer Motion 12.34.3",
+    "3d_engine": "Three.js 0.183.1 + @react-three/fiber 9.5.0 + @splinetool/react-spline 4.1.0",
+    "ui_primitives": "Radix UI (accordion, dialog, label, radio-group, slot, icons)",
+    "build_tool": "Turbopack (next dev --turbopack)",
+    "dev_server_port": 3002,
+    "component_dir": "components/ui/",
+    "pages_dir": "app/",
+    "globals_css": "app/globals.css",
+    "utility_fn": "lib/utils.ts (exports cn — clsx + tailwind-merge)"
+  },
+
+  "design_system": {
+    "brand_name": "Koushik AI — Luxury MedSpa",
+    "design_vibe": "Premium dark luxury — gold accents on charcoal, think Equinox VIP lounge meets medical aesthetics",
+
+    "colors": {
+      "primitives": {
+        "--gold": "#C6A75E",
+        "--gold-hover": "#A88A45",
+        "--blush": "#E8D8C3",
+        "--cream": "#F8F6F3",
+        "--charcoal": "#111111",
+        "--charcoal-2": "#1A1A1A",
+        "--charcoal-3": "#222222"
+      },
+      "semantic_tokens": {
+        "--background": "#111111",
+        "--foreground": "#F8F6F3",
+        "--card": "#1A1A1A",
+        "--card-foreground": "#F8F6F3",
+        "--popover": "#1A1A1A",
+        "--popover-foreground": "#F8F6F3",
+        "--border": "rgba(198,167,94,0.18)",
+        "--input": "rgba(255,255,255,0.07)",
+        "--ring": "rgba(198,167,94,0.4)",
+        "--primary": "#C6A75E",
+        "--primary-foreground": "#111111",
+        "--secondary": "#222222",
+        "--secondary-foreground": "#F8F6F3",
+        "--muted": "#1E1E1E",
+        "--muted-foreground": "rgba(248,246,243,0.48)",
+        "--accent": "rgba(198,167,94,0.1)",
+        "--accent-foreground": "#F8F6F3",
+        "--destructive": "oklch(0.577 0.245 27.325)"
+      },
+      "page_theme_constants": {
+        "_note": "Used in page-level components as a JS object named C",
+        "gold": "#C6A75E",
+        "goldHover": "#A88A45",
+        "goldLight": "#D4C48A",
+        "bg": "#0A0A0B",
+        "bgCard": "#141414",
+        "bgElevated": "#1A1A1A",
+        "border": "#252525",
+        "text": "#F5F0EB",
+        "muted": "#8A8078",
+        "subtle": "#5A5550"
+      },
+      "usage_rules": {
+        "page_background": "--charcoal (#111111)",
+        "alternate_section_bg": "--charcoal-2 (#1A1A1A)",
+        "card_backgrounds": "--charcoal-2 (#1A1A1A)",
+        "all_borders": "rgba(198,167,94,0.18) — gold-tinted, NOT plain gray",
+        "primary_accent": "--gold (#C6A75E) everywhere",
+        "button_hover_state": "--gold-hover (#A88A45)",
+        "headings_and_body": "--cream (#F8F6F3)",
+        "muted_text": "rgba(248,246,243,0.48)",
+        "card_glow_on_hover": "rgba(198,167,94,0.25)",
+        "never_use": "Default Tailwind blue/indigo — always use gold palette"
+      }
+    },
+
+    "typography": {
+      "headings": {
+        "font_family": "Playfair Display, serif",
+        "css_variable": "--font-playfair",
+        "weights": [400, 500, 600, 700, 800],
+        "letter_spacing": "-0.02em",
+        "applies_to": "h1, h2, h3"
+      },
+      "body": {
+        "font_family": "Inter, sans-serif",
+        "css_variable": "--font-inter",
+        "weights": [300, 400, 500, 600, 700],
+        "letter_spacing": "normal",
+        "applies_to": "body, p, a, button, input, nav, labels"
+      },
+      "font_sizes": {
+        "hero_title": "clamp(3.5rem, 9vw, 8rem)",
+        "section_title": "clamp(2.5rem, 5vw, 4.5rem)",
+        "card_title": "1.5rem",
+        "body_large": "1.1rem",
+        "body_regular": "1rem",
+        "body_small": "0.9rem",
+        "button_text": "0.85rem",
+        "nav_link": "0.8rem",
+        "caption": "0.75rem"
+      }
+    },
+
+    "border_radius": {
+      "--radius": "0.75rem",
+      "--radius-sm": "calc(var(--radius) - 4px)",
+      "--radius-md": "calc(var(--radius) - 2px)",
+      "--radius-lg": "var(--radius)",
+      "--radius-xl": "calc(var(--radius) + 4px)"
+    },
+
+    "css_utility_classes": {
+      "gold-glow": {
+        "css": "box-shadow: 0 0 0 1px rgba(198,167,94,0.3), 0 0 24px rgba(198,167,94,0.18)",
+        "use_for": "Subtle gold glow on cards, inputs, feature items"
+      },
+      "gold-glow-lg": {
+        "css": "box-shadow: 0 0 0 1px rgba(198,167,94,0.35), 0 8px 48px rgba(198,167,94,0.28)",
+        "use_for": "Strong gold glow for highlighted/featured cards"
+      },
+      "card-lift": {
+        "css": "transition: transform 0.3s, box-shadow 0.3s; &:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(198,167,94,0.12) }",
+        "use_for": "Interactive card hover lift effect"
+      },
+      "luxury-bg": {
+        "css": "background: radial-gradient(ellipse at 20% 20%, rgba(198,167,94,0.07), transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(232,216,195,0.05), transparent 50%), #111111",
+        "use_for": "Section backgrounds with subtle radial gold glows"
+      },
+      "grain-overlay": {
+        "css": "::before with SVG noise filter at opacity 0.035",
+        "use_for": "Film-grain texture overlay for luxury feel"
+      },
+      "gold-rule": {
+        "css": "height: 1px; background: linear-gradient(to right, transparent, rgba(198,167,94,0.35), transparent)",
+        "use_for": "Section divider lines"
+      },
+      "shiny-gold-btn": {
+        "css": "Rotating conic-gradient shimmer border, dot pattern overlay, inner glow, CSS @property animations",
+        "use_for": "Premium gold CTA buttons (GoldShinyButton component wraps this class)"
+      }
+    },
+
+    "keyframe_animations": {
+      "spotlight": {
+        "class": "animate-spotlight",
+        "css": "0%: opacity:0, translate(-72%,-62%) scale(0.5) → 100%: opacity:1, translate(-50%,-40%) scale(1)",
+        "duration": "2s ease, 0.75s delay",
+        "use_for": "Hero background SVG beams"
+      },
+      "fadeInUp": {
+        "class": "animate-fade-in-up",
+        "css": "from: opacity:0, translateY(28px) → to: opacity:1, translateY(0)",
+        "duration": "0.7s cubic-bezier(0.22,1,0.36,1)",
+        "delayed_variants": ["animate-fade-in-up-delay-1 (0.15s)", "animate-fade-in-up-delay-2 (0.3s)", "animate-fade-in-up-delay-3 (0.45s)"],
+        "use_for": "Primary scroll-reveal for text, cards, sections"
+      },
+      "gradientShift": {
+        "class": "animate-gradient-shift",
+        "css": "background-position: 0% 50% → 100% 50% → loop",
+        "duration": "6s ease infinite",
+        "use_for": "Living gradient backgrounds"
+      },
+      "shiny-text": {
+        "class": "animate-shiny-text",
+        "css": "background-position sweep from -100% to 100%",
+        "duration": "8s infinite",
+        "use_for": "Shimmer text highlight (AnimatedShinyText component)"
+      },
+      "navbar-slide-down": {
+        "class": "animate-navbar-slide-down",
+        "css": "translateY(-100%) → translateY(0)",
+        "duration": "0.3s cubic-bezier(0.4,0,0.2,1)"
+      },
+      "navbar-dropdown": {
+        "class": "animate-navbar-dropdown",
+        "css": "rotateX(-12deg) scale(0.9) → rotateX(0) scale(1)",
+        "duration": "0.2s cubic-bezier(0.4,0,0.2,1)"
+      },
+      "spin": {
+        "class": "loader",
+        "css": "rotate(0deg) → rotate(360deg)",
+        "duration": "0.8s linear infinite",
+        "use_for": "Loading spinner"
+      },
+      "accordion-down": {
+        "class": "animate-accordion-down",
+        "css": "height: 0 → var(--radix-accordion-content-height)",
+        "duration": "0.2s ease-out"
+      },
+      "accordion-up": {
+        "class": "animate-accordion-up",
+        "css": "height: var(--radix-accordion-content-height) → 0",
+        "duration": "0.2s ease-out"
+      },
+      "sgb-rotate": {
+        "css": "--sgb-angle: 0deg → 360deg",
+        "duration": "3s linear infinite",
+        "use_for": "Shiny gold button conic gradient rotation"
+      },
+      "sgb-shimmer": {
+        "css": "rotate: 0deg → 360deg",
+        "duration": "3s linear infinite",
+        "use_for": "Shiny gold button inner shimmer"
+      },
+      "sgb-breathe": {
+        "css": "scale: 1 → 1.2 → 1",
+        "duration": "4.5s linear infinite",
+        "use_for": "Shiny gold button inner glow breathing"
+      }
+    },
+
+    "scrollbar": {
+      "width": "5px",
+      "track": "#111111",
+      "thumb": "rgba(198,167,94,0.3)",
+      "thumb_hover": "#C6A75E"
+    },
+
+    "animation_rules": {
+      "only_animate": ["transform", "opacity"],
+      "never_use": "transition-all",
+      "mobile_first": true,
+      "every_clickable_needs": ["hover state", "focus-visible state", "active state"]
+    }
+  },
+
+  "components": [
+    {
+      "id": 1,
+      "name": "21st-navbar",
+      "file": "components/ui/21st-navbar.tsx",
+      "exports": [
+        { "name": "Header", "type": "default+named" },
+        { "name": "Button", "type": "named" }
+      ],
+      "props": {
+        "className": { "type": "string", "optional": true },
+        "theme": { "type": "'light' | 'dark'", "optional": true },
+        "isSticky": { "type": "boolean", "optional": true },
+        "isStickyOverlay": { "type": "boolean", "optional": true },
+        "withBorder": { "type": "boolean", "optional": true },
+        "logo": { "type": "ReactNode", "optional": true },
+        "menuItems": { "type": "NavItem[]", "optional": true },
+        "onThemeChange": { "type": "() => void", "optional": true },
+        "rightContent": { "type": "ReactNode", "optional": true }
+      },
+      "interfaces": {
+        "NavItem": {
+          "title": "string",
+          "href": "string",
+          "children": "NavItem[] (optional, creates dropdown)"
+        }
+      },
+      "dependencies": ["clsx", "@/lib/utils"],
+      "category": "navigation",
+      "interactive": true,
+      "interactive_details": "Hover dropdowns with perspective transform, mobile hamburger toggle",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Full-featured responsive navbar with sticky scroll behavior, dropdown menus with 3D entrance animation, mobile slide-in menu, and theme switching support."
+    },
+    {
+      "id": 2,
+      "name": "accordion",
+      "file": "components/ui/accordion.tsx",
+      "exports": [
+        { "name": "Accordion", "type": "named" },
+        { "name": "AccordionItem", "type": "named" },
+        { "name": "AccordionTrigger", "type": "named" },
+        { "name": "AccordionContent", "type": "named" }
+      ],
+      "props": {
+        "_note": "All props inherited from @radix-ui/react-accordion primitives",
+        "type": { "type": "'single' | 'multiple'", "on": "Accordion" },
+        "collapsible": { "type": "boolean", "on": "Accordion", "optional": true },
+        "value": { "type": "string | string[]", "on": "Accordion", "optional": true }
+      },
+      "dependencies": ["@radix-ui/react-accordion", "@radix-ui/react-icons", "@/lib/utils"],
+      "category": "layout",
+      "interactive": true,
+      "interactive_details": "Click to expand/collapse with height animation, keyboard accessible, chevron rotation indicator",
+      "webgl": false,
+      "accepts_children": true,
+      "children_pattern": "Accordion > AccordionItem(value) > AccordionTrigger + AccordionContent",
+      "description": "Accessible accordion built on Radix UI primitives with animated expand/collapse, chevron rotation, and keyboard navigation."
+    },
+    {
+      "id": 3,
+      "name": "animated-shiny-text",
+      "file": "components/ui/animated-shiny-text.tsx",
+      "exports": [
+        { "name": "AnimatedShinyText", "type": "named" }
+      ],
+      "props": {
+        "children": { "type": "ReactNode", "required": true },
+        "className": { "type": "string", "optional": true },
+        "shimmerWidth": { "type": "number", "default": 100, "optional": true }
+      },
+      "dependencies": ["@/lib/utils"],
+      "category": "effect",
+      "interactive": false,
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Text wrapper that applies a shimmering gold gradient sweep animation. Uses CSS background-clip text technique with configurable shimmer width."
+    },
+    {
+      "id": 4,
+      "name": "background-paths",
+      "file": "components/ui/background-paths.tsx",
+      "exports": [
+        { "name": "BackgroundPaths", "type": "named" }
+      ],
+      "props": {
+        "title": { "type": "string", "default": "Background Paths", "optional": true },
+        "children": { "type": "ReactNode", "optional": true },
+        "pathColor": { "type": "string", "optional": true, "note": "Custom SVG path stroke color" },
+        "pathOpacity": { "type": "number", "optional": true, "note": "Custom SVG path opacity" }
+      },
+      "dependencies": ["framer-motion", "@/lib/utils"],
+      "category": "hero",
+      "interactive": false,
+      "interactive_details": "Auto-animated flowing SVG paths with staggered entrance",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Full-screen hero background with 36 animated SVG bezier paths that flow in with staggered spring animations. Adjustable path color and opacity for brand customization."
+    },
+    {
+      "id": 5,
+      "name": "badge",
+      "file": "components/ui/badge.tsx",
+      "exports": [
+        { "name": "Badge", "type": "named" },
+        { "name": "badgeVariants", "type": "named" }
+      ],
+      "props": {
+        "variant": { "type": "'default' | 'secondary' | 'destructive' | 'outline'", "default": "default", "optional": true },
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["class-variance-authority", "@/lib/utils"],
+      "category": "layout",
+      "interactive": false,
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Small status badge with 4 visual variants. Uses class-variance-authority for variant management."
+    },
+    {
+      "id": 6,
+      "name": "button",
+      "file": "components/ui/button.tsx",
+      "exports": [
+        { "name": "Button", "type": "named" },
+        { "name": "buttonVariants", "type": "named" }
+      ],
+      "props": {
+        "variant": { "type": "'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'", "default": "default", "optional": true },
+        "size": { "type": "'default' | 'sm' | 'lg' | 'icon'", "default": "default", "optional": true },
+        "asChild": { "type": "boolean", "default": false, "optional": true, "note": "Renders as Slot, passing props to child element" },
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "@/lib/utils"],
+      "category": "button",
+      "interactive": true,
+      "interactive_details": "Hover bg change, focus-visible ring, active press, disabled state",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Core button component with 6 visual variants and 4 sizes. Supports polymorphic rendering via asChild (Radix Slot). Standard shadcn/ui pattern."
+    },
+    {
+      "id": 7,
+      "name": "card-with-noise-pattern",
+      "file": "components/ui/card-with-noise-patter.tsx",
+      "exports": [
+        { "name": "NoisePatternCard", "type": "named" },
+        { "name": "NoisePatternCardBody", "type": "named" }
+      ],
+      "props": {
+        "children": { "type": "ReactNode", "required": true },
+        "className": { "type": "string", "optional": true },
+        "patternClassName": { "type": "string", "optional": true },
+        "overlayClassName": { "type": "string", "optional": true }
+      },
+      "dependencies": ["framer-motion", "@/lib/utils"],
+      "category": "card",
+      "interactive": true,
+      "interactive_details": "Hover card-lift effect",
+      "webgl": false,
+      "accepts_children": true,
+      "children_pattern": "NoisePatternCard > NoisePatternCardBody",
+      "description": "Card with SVG noise texture background overlay and dark gradient. Creates a tactile, premium look. Body component provides padded content area."
+    },
+    {
+      "id": 8,
+      "name": "card",
+      "file": "components/ui/card.tsx",
+      "exports": [
+        { "name": "Card", "type": "named" },
+        { "name": "CardHeader", "type": "named" },
+        { "name": "CardFooter", "type": "named" },
+        { "name": "CardTitle", "type": "named" },
+        { "name": "CardDescription", "type": "named" },
+        { "name": "CardContent", "type": "named" }
+      ],
+      "props": {
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["@/lib/utils"],
+      "category": "card",
+      "interactive": false,
+      "webgl": false,
+      "accepts_children": true,
+      "children_pattern": "Card > CardHeader(CardTitle + CardDescription) + CardContent + CardFooter",
+      "description": "Standard shadcn/ui card with 6 composable slot components. Dark theme with gold-tinted border."
+    },
+    {
+      "id": 9,
+      "name": "container-scroll-animation",
+      "file": "components/ui/container-scroll-animation.tsx",
+      "exports": [
+        { "name": "ContainerScroll", "type": "named" },
+        { "name": "Header", "type": "named" },
+        { "name": "Card", "type": "named" }
+      ],
+      "props": {
+        "titleComponent": { "type": "ReactNode", "required": true, "on": "ContainerScroll" },
+        "children": { "type": "ReactNode", "required": true, "on": "ContainerScroll", "note": "Content inside the 3D-rotating card (typically an image)" }
+      },
+      "dependencies": ["framer-motion", "@/lib/utils"],
+      "category": "animation",
+      "interactive": true,
+      "interactive_details": "Scroll-driven: card rotates in 3D perspective, scales, and translates as user scrolls through the section",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Scroll-driven 3D card animation. As the user scrolls, the card rotates from a tilted perspective to flat, scales up, and reveals content. Title component fades above."
+    },
+    {
+      "id": 10,
+      "name": "dialog",
+      "file": "components/ui/dialog.tsx",
+      "exports": [
+        { "name": "Dialog", "type": "named" },
+        { "name": "DialogTrigger", "type": "named" },
+        { "name": "DialogPortal", "type": "named" },
+        { "name": "DialogClose", "type": "named" },
+        { "name": "DialogOverlay", "type": "named" },
+        { "name": "DialogContent", "type": "named" },
+        { "name": "DialogHeader", "type": "named" },
+        { "name": "DialogFooter", "type": "named" },
+        { "name": "DialogTitle", "type": "named" },
+        { "name": "DialogDescription", "type": "named" }
+      ],
+      "props": {
+        "_note": "All props inherited from @radix-ui/react-dialog primitives",
+        "open": { "type": "boolean", "on": "Dialog", "optional": true },
+        "onOpenChange": { "type": "(open: boolean) => void", "on": "Dialog", "optional": true }
+      },
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react", "@/lib/utils"],
+      "category": "layout",
+      "interactive": true,
+      "interactive_details": "Focus trap, ESC to close, overlay click to close, animated entrance/exit",
+      "webgl": false,
+      "accepts_children": true,
+      "children_pattern": "Dialog > DialogTrigger + DialogContent(DialogHeader(DialogTitle + DialogDescription) + content + DialogFooter)",
+      "description": "Accessible modal dialog built on Radix primitives. Features focus trap, keyboard dismissal, backdrop overlay, and X close button."
+    },
+    {
+      "id": 11,
+      "name": "docks",
+      "file": "components/ui/docks.tsx",
+      "exports": [
+        { "name": "default", "type": "default", "component_name": "Component" }
+      ],
+      "props": {},
+      "dependencies": ["lucide-react"],
+      "category": "navigation",
+      "interactive": true,
+      "interactive_details": "Hover tooltip labels, glassmorphism backdrop-blur",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Self-contained macOS-style dock with glassmorphism background, icon buttons, and hover tooltips. Hardcoded icons and links."
+    },
+    {
+      "id": 12,
+      "name": "fey-button",
+      "file": "components/ui/fey-button.tsx",
+      "exports": [
+        { "name": "FeyButton", "type": "named" }
+      ],
+      "props": {
+        "children": { "type": "ReactNode", "required": true },
+        "className": { "type": "string", "optional": true },
+        "_extends": "ButtonHTMLAttributes<HTMLButtonElement>"
+      },
+      "dependencies": ["next-themes", "@radix-ui/react-slot", "@/lib/utils"],
+      "category": "button",
+      "interactive": true,
+      "interactive_details": "Hover radial gradient glow, disabled state",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Premium pill-shaped button with radial gradient backdrop, complex inset shadows, and theme-aware styling. Includes a lock icon."
+    },
+    {
+      "id": 13,
+      "name": "glowing-effect",
+      "file": "components/ui/glowing-effect.tsx",
+      "exports": [
+        { "name": "GlowingEffect", "type": "named" }
+      ],
+      "props": {
+        "blur": { "type": "number", "default": 0, "optional": true },
+        "inactiveZone": { "type": "number", "default": 0.7, "optional": true },
+        "proximity": { "type": "number", "default": 0, "optional": true },
+        "spread": { "type": "number", "default": 20, "optional": true },
+        "variant": { "type": "'default' | 'white' | 'gold'", "default": "gold", "optional": true },
+        "glow": { "type": "boolean", "default": false, "optional": true },
+        "className": { "type": "string", "optional": true },
+        "disabled": { "type": "boolean", "default": true, "optional": true },
+        "movementDuration": { "type": "number", "default": 2, "optional": true },
+        "borderWidth": { "type": "number", "default": 1, "optional": true }
+      },
+      "dependencies": ["motion/react", "@/lib/utils"],
+      "category": "effect",
+      "interactive": true,
+      "interactive_details": "Mouse-tracking conic-gradient border glow that follows the pointer. Scroll-aware activation.",
+      "webgl": false,
+      "accepts_children": false,
+      "children_note": "Decorative overlay — place as sibling inside a parent container. Uses rounded-[inherit].",
+      "description": "Mouse-following conic-gradient glow border effect. The gold variant uses the brand gold palette. Placed as a sibling element inside a positioned parent."
+    },
+    {
+      "id": 14,
+      "name": "header-1",
+      "file": "components/ui/header-1.tsx",
+      "exports": [
+        { "name": "Header", "type": "named" }
+      ],
+      "props": {},
+      "dependencies": ["@/components/ui/button", "@/components/ui/menu-toggle-icon", "@/components/ui/use-scroll", "react-dom"],
+      "category": "navigation",
+      "interactive": true,
+      "interactive_details": "Scroll-aware sticky behavior, mobile hamburger with fullscreen portal menu, smooth scroll navigation links",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Production-ready branded sticky header with gold CTA button, desktop navigation links, mobile fullscreen menu rendered via React portal. Hardcoded Koushik AI branding."
+    },
+    {
+      "id": 15,
+      "name": "hero-shutter-text",
+      "file": "components/ui/hero-shutter-text.tsx",
+      "exports": [
+        { "name": "default", "type": "default", "component_name": "HeroText" }
+      ],
+      "props": {
+        "text": { "type": "string", "default": "IMMERSE", "optional": true },
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["framer-motion", "lucide-react"],
+      "category": "hero",
+      "interactive": true,
+      "interactive_details": "Click-to-replay shutter animation, replay button at bottom",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Large hero text with horizontal shutter-slice reveal animation. Each character is split into 3 horizontal slices that sweep across. Includes a replay button."
+    },
+    {
+      "id": 16,
+      "name": "infinite-slider",
+      "file": "components/ui/infinite-slider.tsx",
+      "exports": [
+        { "name": "InfiniteSlider", "type": "named" }
+      ],
+      "props": {
+        "children": { "type": "ReactNode", "required": true },
+        "gap": { "type": "number", "default": 16, "optional": true },
+        "duration": { "type": "number", "default": 25, "optional": true },
+        "durationOnHover": { "type": "number", "optional": true },
+        "direction": { "type": "'horizontal' | 'vertical'", "default": "horizontal", "optional": true },
+        "reverse": { "type": "boolean", "default": false, "optional": true },
+        "speed": { "type": "number", "optional": true },
+        "speedOnHover": { "type": "number", "optional": true },
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["framer-motion", "react-use-measure"],
+      "category": "animation",
+      "interactive": true,
+      "interactive_details": "Speed change on hover (durationOnHover / speedOnHover)",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Infinite looping marquee slider that duplicates its children for seamless continuous scroll. Supports horizontal/vertical direction, reverse mode, and hover speed control."
+    },
+    {
+      "id": 17,
+      "name": "label",
+      "file": "components/ui/label.tsx",
+      "exports": [
+        { "name": "Label", "type": "named" }
+      ],
+      "props": {
+        "_note": "Inherits all props from @radix-ui/react-label + VariantProps",
+        "htmlFor": { "type": "string", "optional": true }
+      },
+      "dependencies": ["@radix-ui/react-label", "class-variance-authority", "@/lib/utils"],
+      "category": "form",
+      "interactive": false,
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Accessible form label built on Radix Label primitive with peer-disabled styling."
+    },
+    {
+      "id": 18,
+      "name": "liquid-button",
+      "file": "components/ui/liquid-button.tsx",
+      "exports": [
+        { "name": "LiquidButton", "type": "named" }
+      ],
+      "props": {
+        "children": { "type": "ReactNode", "required": true },
+        "href": { "type": "string", "optional": true },
+        "onClick": { "type": "() => void", "optional": true },
+        "className": { "type": "string", "optional": true },
+        "variant": { "type": "'primary' | 'secondary'", "default": "primary", "optional": true }
+      },
+      "dependencies": ["framer-motion", "@/lib/utils"],
+      "category": "button",
+      "interactive": true,
+      "interactive_details": "Hover morphing blobs (SVG goo filter), click ripple circles, spring scale animation",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Premium gold liquid-morphing button with SVG goo filter creating organic blob shapes on hover. Click produces ripple circles. Primary variant has gold gradient, secondary is ghost."
+    },
+    {
+      "id": 19,
+      "name": "liquid-glass-button",
+      "file": "components/ui/liquid-glass-button.tsx",
+      "exports": [
+        { "name": "Button", "type": "named" },
+        { "name": "buttonVariants", "type": "named" },
+        { "name": "liquidbuttonVariants", "type": "named" },
+        { "name": "LiquidButton", "type": "named" }
+      ],
+      "props": {
+        "variant": { "type": "'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'cool'", "default": "default", "optional": true },
+        "size": { "type": "'default' | 'sm' | 'lg' | 'xl' | 'xxl' | 'icon'", "default": "default", "optional": true },
+        "asChild": { "type": "boolean", "default": false, "optional": true }
+      },
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority", "@/lib/utils"],
+      "category": "button",
+      "interactive": true,
+      "interactive_details": "Hover scale, focus-visible ring, SVG turbulence displacement filter for glass distortion",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Two-in-one component: a standard Button (with extra 'cool' variant) plus a LiquidButton with SVG feTurbulence glass distortion filter and complex inset shadow layering."
+    },
+    {
+      "id": 20,
+      "name": "logo-cloud-3",
+      "file": "components/ui/logo-cloud-3.tsx",
+      "exports": [
+        { "name": "LogoCloud", "type": "named" }
+      ],
+      "props": {
+        "logos": {
+          "type": "Logo[]",
+          "required": true,
+          "schema": {
+            "src": "string",
+            "alt": "string",
+            "width": "number (optional)",
+            "height": "number (optional)"
+          }
+        },
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["@/components/ui/infinite-slider", "@/lib/utils"],
+      "category": "layout",
+      "interactive": true,
+      "interactive_details": "Hover opacity change, speed change on hover (via InfiniteSlider)",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Infinite scrolling logo cloud with edge-fade gradient mask. Logos are displayed with inverted grayscale filter, driven by data array."
+    },
+    {
+      "id": 21,
+      "name": "menu-toggle-icon",
+      "file": "components/ui/menu-toggle-icon.tsx",
+      "exports": [
+        { "name": "MenuToggleIcon", "type": "named" }
+      ],
+      "props": {
+        "open": { "type": "boolean", "required": true },
+        "duration": { "type": "number", "default": 500, "optional": true },
+        "className": { "type": "string", "optional": true },
+        "_extends": "ComponentProps<'svg'>"
+      },
+      "dependencies": ["@/lib/utils"],
+      "category": "navigation",
+      "interactive": true,
+      "interactive_details": "Animated SVG path morph between hamburger (3 lines) ↔ X (cross)",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Animated hamburger-to-X toggle icon using SVG stroke-dasharray and dashoffset transitions. Controlled via the open prop."
+    },
+    {
+      "id": 22,
+      "name": "modal-pricing",
+      "file": "components/ui/modal-pricing.tsx",
+      "exports": [
+        { "name": "ModalPricing", "type": "named" },
+        { "name": "PlanOption", "type": "type" }
+      ],
+      "props": {
+        "plans": {
+          "type": "PlanOption[]",
+          "optional": true,
+          "has_defaults": true,
+          "schema": {
+            "id": "string",
+            "name": "string",
+            "price": "string",
+            "description": "string",
+            "features": "string[]"
+          }
+        }
+      },
+      "dependencies": ["@/components/ui/dialog", "@/components/ui/button", "@/components/ui/radio-group", "lucide-react"],
+      "category": "pricing",
+      "interactive": true,
+      "interactive_details": "Dialog open/close, radio group plan selection, hover states, keyboard accessible",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Modal dialog with radio-group plan selector, feature comparison lists, and confirm/cancel buttons. Data-driven via plans prop with sensible defaults."
+    },
+    {
+      "id": 23,
+      "name": "neon-button",
+      "file": "components/ui/neon-button.tsx",
+      "exports": [
+        { "name": "Button", "type": "named" },
+        { "name": "buttonVariants", "type": "named" },
+        { "name": "ButtonProps", "type": "type" }
+      ],
+      "props": {
+        "variant": { "type": "'default' | 'solid' | 'ghost'", "default": "default", "optional": true },
+        "size": { "type": "'default' | 'sm' | 'lg'", "default": "default", "optional": true },
+        "neon": { "type": "boolean", "default": true, "optional": true },
+        "className": { "type": "string", "optional": true },
+        "_extends": "ButtonHTMLAttributes<HTMLButtonElement>"
+      },
+      "dependencies": ["class-variance-authority", "@/lib/utils"],
+      "category": "button",
+      "interactive": true,
+      "interactive_details": "Hover neon glow lines (blue gradient sweep at top and bottom edges)",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Button with optional neon glow effect — gradient lines appear on hover at top and bottom edges. Can be toggled off via neon={false}."
+    },
+    {
+      "id": 24,
+      "name": "pricing-card",
+      "file": "components/ui/pricing-card.tsx",
+      "exports": [
+        { "name": "PricingCard", "type": "named" },
+        { "name": "PricingTier", "type": "type" }
+      ],
+      "props": {
+        "tier": {
+          "type": "PricingTier",
+          "required": true,
+          "schema": {
+            "name": "string",
+            "price": "Record<string, number | string>",
+            "description": "string",
+            "features": "string[]",
+            "cta": "string",
+            "highlighted": "boolean (optional)",
+            "popular": "boolean (optional)"
+          }
+        },
+        "paymentFrequency": { "type": "string", "required": true }
+      },
+      "dependencies": ["lucide-react", "@number-flow/react", "@/components/ui/badge", "@/components/ui/button", "@/components/ui/card"],
+      "category": "pricing",
+      "interactive": true,
+      "interactive_details": "Animated number transitions via NumberFlow, button hover states, highlighted/popular decorative variants",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Pricing tier card with animated number transitions (NumberFlow), feature checklist, and popular/highlighted visual variants with decorative gradient backgrounds."
+    },
+    {
+      "id": 25,
+      "name": "pricing-section",
+      "file": "components/ui/pricing-section.tsx",
+      "exports": [
+        { "name": "PricingSection", "type": "named" }
+      ],
+      "props": {
+        "title": { "type": "string", "required": true },
+        "subtitle": { "type": "string", "required": true },
+        "tiers": { "type": "PricingTier[]", "required": true },
+        "frequencies": { "type": "string[]", "required": true }
+      },
+      "dependencies": ["@/components/ui/pricing-card", "@/components/ui/pricing-tab"],
+      "category": "pricing",
+      "interactive": true,
+      "interactive_details": "Tab switching between billing frequencies, cards respond to frequency selection",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Complete pricing section layout with frequency toggle tabs (monthly/yearly) and responsive grid of pricing cards. Fully data-driven."
+    },
+    {
+      "id": 26,
+      "name": "pricing-tab",
+      "file": "components/ui/pricing-tab.tsx",
+      "exports": [
+        { "name": "Tab", "type": "named" }
+      ],
+      "props": {
+        "text": { "type": "string", "required": true },
+        "selected": { "type": "boolean", "required": true },
+        "setSelected": { "type": "(text: string) => void", "required": true },
+        "discount": { "type": "boolean", "default": false, "optional": true }
+      },
+      "dependencies": ["framer-motion", "@/components/ui/badge", "@/lib/utils"],
+      "category": "navigation",
+      "interactive": true,
+      "interactive_details": "Click selection with spring-animated background pill (Framer Motion layoutId), optional 'Save 35%' discount badge",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Animated pricing toggle tab with shared layout animation for the active indicator pill. Optional discount badge appears on yearly plans."
+    },
+    {
+      "id": 27,
+      "name": "radio-group",
+      "file": "components/ui/radio-group.tsx",
+      "exports": [
+        { "name": "RadioGroup", "type": "named" },
+        { "name": "RadioGroupItem", "type": "named" }
+      ],
+      "props": {
+        "_note": "All props inherited from @radix-ui/react-radio-group primitives",
+        "value": { "type": "string", "on": "RadioGroup", "optional": true },
+        "onValueChange": { "type": "(value: string) => void", "on": "RadioGroup", "optional": true }
+      },
+      "dependencies": ["@radix-ui/react-radio-group", "lucide-react", "@/lib/utils"],
+      "category": "form",
+      "interactive": true,
+      "interactive_details": "Radio selection, keyboard navigation, focus-visible ring",
+      "webgl": false,
+      "accepts_children": true,
+      "children_pattern": "RadioGroup > RadioGroupItem(value)",
+      "description": "Accessible radio group built on Radix primitives with circle indicator icon."
+    },
+    {
+      "id": 28,
+      "name": "shader-animation",
+      "file": "components/ui/shader-animation.tsx",
+      "exports": [
+        { "name": "ShaderAnimation", "type": "named+default" }
+      ],
+      "props": {},
+      "dependencies": ["three"],
+      "category": "effect",
+      "interactive": false,
+      "interactive_details": "Auto-animating time-based GLSL shader",
+      "webgl": true,
+      "webgl_details": "Full Three.js WebGL renderer with custom GLSL fragment shader. Creates concentric animated color rings.",
+      "accepts_children": false,
+      "description": "Full-screen WebGL shader animation with concentric color rings. Uses Three.js PlaneGeometry with custom ShaderMaterial and time-based GLSL fragment shader."
+    },
+    {
+      "id": 29,
+      "name": "shader-lines",
+      "file": "components/ui/shader-lines.tsx",
+      "exports": [
+        { "name": "ShaderAnimation", "type": "named", "note": "Same export name as shader-animation.tsx — use aliased import" }
+      ],
+      "props": {},
+      "dependencies": ["three (CDN r89 — loaded via script injection into window.THREE)"],
+      "category": "effect",
+      "interactive": false,
+      "interactive_details": "Auto-animating mosaic GLSL shader",
+      "webgl": true,
+      "webgl_details": "Three.js loaded via CDN script tag (r89). Creates pixelated mosaic shader effect with color rings. Absolute positioned overlay.",
+      "accepts_children": false,
+      "description": "Pixelated/mosaic WebGL shader effect with color rings. Loads Three.js r89 from CDN. Renders as an absolute positioned overlay canvas.",
+      "import_warning": "Same export name 'ShaderAnimation' as shader-animation.tsx — use import alias: import { ShaderAnimation as ShaderLines } from './shader-lines'"
+    },
+    {
+      "id": 30,
+      "name": "shape-landing-hero",
+      "file": "components/ui/shape-landing-hero.tsx",
+      "exports": [
+        { "name": "HeroGeometric", "type": "named" }
+      ],
+      "props": {
+        "badge": { "type": "string", "default": "Design Collective", "optional": true },
+        "title1": { "type": "string", "optional": true },
+        "title2": { "type": "string", "optional": true }
+      },
+      "internal_components": {
+        "ElegantShape": {
+          "props": {
+            "className": "string",
+            "delay": "number",
+            "width": "number",
+            "height": "number",
+            "rotate": "number",
+            "gradient": "string"
+          }
+        }
+      },
+      "dependencies": ["framer-motion", "lucide-react", "@/lib/utils"],
+      "category": "hero",
+      "interactive": false,
+      "interactive_details": "Auto-animated floating pill shapes with staggered entrance, continuous float animation",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Full-screen hero section with 5 floating semi-transparent pill shapes, staggered entrance animation, gradient text title, and badge. Shapes have continuous floating animation."
+    },
+    {
+      "id": 31,
+      "name": "shiny-button",
+      "file": "components/ui/shiny-button.tsx",
+      "exports": [
+        { "name": "GoldShinyButton", "type": "named" }
+      ],
+      "props": {
+        "children": { "type": "ReactNode", "required": true },
+        "className": { "type": "string", "optional": true },
+        "href": { "type": "string", "optional": true, "note": "Renders as <a> instead of <button> when provided" },
+        "type": { "type": "'button' | 'submit' | 'reset'", "default": "button", "optional": true },
+        "disabled": { "type": "boolean", "optional": true },
+        "onClick": { "type": "() => void", "optional": true },
+        "style": { "type": "CSSProperties", "optional": true }
+      },
+      "dependencies": [],
+      "css_dependency": "Requires .shiny-gold-btn class from globals.css (CSS @property animations, conic-gradient rotation, dot pattern)",
+      "category": "button",
+      "interactive": true,
+      "interactive_details": "Hover/focus-visible activates rotating conic-gradient shimmer, dot pattern overlay, and inner glow breathing (all CSS-only via @property)",
+      "webgl": false,
+      "accepts_children": true,
+      "description": "Premium gold CTA button with CSS-only rotating shimmer effect, conic gradient border, dot pattern overlay, and breathing inner glow. The hero CTA button of the design system."
+    },
+    {
+      "id": 32,
+      "name": "sign-in-flow-1",
+      "file": "components/ui/sign-in-flow-1.tsx",
+      "exports": [
+        { "name": "CanvasRevealEffect", "type": "named" },
+        { "name": "SignInPage", "type": "named" }
+      ],
+      "props": {
+        "CanvasRevealEffect": {
+          "animationSpeed": { "type": "number", "default": 10, "optional": true },
+          "opacities": { "type": "number[]", "optional": true },
+          "colors": { "type": "number[][]", "optional": true },
+          "containerClassName": { "type": "string", "optional": true },
+          "dotSize": { "type": "number", "optional": true },
+          "showGradient": { "type": "boolean", "default": true, "optional": true },
+          "reverse": { "type": "boolean", "default": false, "optional": true }
+        },
+        "SignInPage": {
+          "className": { "type": "string", "optional": true }
+        }
+      },
+      "dependencies": ["framer-motion", "next/link", "@react-three/fiber", "three", "@/lib/utils"],
+      "category": "form",
+      "interactive": true,
+      "interactive_details": "3-step sign-in flow: email input → 6-digit OTP → success. Animated step transitions, Google sign-in button.",
+      "webgl": true,
+      "webgl_details": "Three.js via @react-three/fiber with custom GLSL3 dot-matrix reveal shader for background effect",
+      "accepts_children": false,
+      "description": "Complete 3-step sign-in flow (email → OTP → success) with WebGL dot-matrix canvas reveal background effect and animated step transitions. Fully self-contained page component."
+    },
+    {
+      "id": 33,
+      "name": "social-links",
+      "file": "components/ui/social-links.tsx",
+      "exports": [
+        { "name": "SocialLinks", "type": "named" }
+      ],
+      "props": {
+        "socials": {
+          "type": "Social[]",
+          "required": true,
+          "schema": {
+            "name": "string",
+            "image": "string"
+          }
+        },
+        "className": { "type": "string", "optional": true },
+        "_extends": "HTMLAttributes<HTMLDivElement>"
+      },
+      "dependencies": ["framer-motion", "@/lib/utils"],
+      "category": "navigation",
+      "interactive": true,
+      "interactive_details": "Hover shows floating image popover above name with random rotation, click bounce scale, non-hovered items dim in opacity",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Social media links row with floating image popover on hover, random rotation, click scale animation, and opacity dimming of non-hovered items."
+    },
+    {
+      "id": 34,
+      "name": "splite",
+      "file": "components/ui/splite.tsx",
+      "exports": [
+        { "name": "SplineScene", "type": "named" }
+      ],
+      "props": {
+        "scene": { "type": "string", "required": true, "note": "Spline 3D scene URL" },
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["@splinetool/react-spline"],
+      "category": "effect",
+      "interactive": true,
+      "interactive_details": "Spline 3D scenes are fully interactive (rotate, zoom, click) depending on scene configuration",
+      "webgl": true,
+      "webgl_details": "Spline 3D WebGL scene loaded from URL. Lazy-loaded with React.lazy + Suspense.",
+      "accepts_children": false,
+      "description": "Lazy-loaded Spline 3D scene wrapper with loading spinner and fade-in transition. Renders any Spline scene URL as an interactive 3D WebGL canvas."
+    },
+    {
+      "id": 35,
+      "name": "spotlight",
+      "file": "components/ui/spotlight.tsx",
+      "exports": [
+        { "name": "Spotlight", "type": "named" }
+      ],
+      "props": {
+        "className": { "type": "string", "optional": true },
+        "fill": { "type": "string", "optional": true, "note": "Fill color for the spotlight SVG beam" }
+      },
+      "dependencies": ["@/lib/utils"],
+      "category": "effect",
+      "interactive": false,
+      "webgl": false,
+      "accepts_children": false,
+      "description": "SVG spotlight beam effect with gaussian blur filter. Animated entrance via CSS animate-spotlight keyframes. Decorative overlay for hero sections."
+    },
+    {
+      "id": 36,
+      "name": "text-scramble",
+      "file": "components/ui/text-scramble.tsx",
+      "exports": [
+        { "name": "TextScramble", "type": "named" }
+      ],
+      "props": {
+        "children": { "type": "string", "required": true, "note": "Target text to reveal" },
+        "duration": { "type": "number", "default": 0.8, "optional": true },
+        "speed": { "type": "number", "default": 0.04, "optional": true },
+        "characterSet": { "type": "string", "default": "A-Za-z0-9", "optional": true },
+        "as": { "type": "React.ElementType", "default": "p", "optional": true },
+        "className": { "type": "string", "optional": true },
+        "trigger": { "type": "boolean", "default": true, "optional": true },
+        "onScrambleComplete": { "type": "() => void", "optional": true }
+      },
+      "dependencies": ["framer-motion"],
+      "category": "animation",
+      "interactive": false,
+      "interactive_details": "Trigger-controlled text decode animation",
+      "webgl": false,
+      "accepts_children": true,
+      "children_note": "String children only — used as the target text to decode into",
+      "description": "Text scramble/decode effect that progressively reveals target text character by character through random character cycling. Configurable speed, duration, and character set."
+    },
+    {
+      "id": 37,
+      "name": "tubelight-navbar",
+      "file": "components/ui/tubelight-navbar.tsx",
+      "exports": [
+        { "name": "NavBar", "type": "named" }
+      ],
+      "props": {
+        "items": {
+          "type": "NavItem[]",
+          "required": true,
+          "schema": {
+            "name": "string",
+            "url": "string",
+            "icon": "LucideIcon"
+          }
+        },
+        "className": { "type": "string", "optional": true }
+      },
+      "dependencies": ["framer-motion", "next/link", "lucide-react", "@/lib/utils"],
+      "category": "navigation",
+      "interactive": true,
+      "interactive_details": "Click tab selection with spring-animated 'tubelight' glow indicator that follows selected tab. Icons on mobile, text labels on desktop.",
+      "webgl": false,
+      "accepts_children": false,
+      "description": "Fixed-position pill-shaped navbar with animated glowing tubelight indicator. Bottom-positioned on mobile, top on desktop. Renders icons on mobile and text on desktop."
+    },
+    {
+      "id": 38,
+      "name": "use-scroll",
+      "file": "components/ui/use-scroll.tsx",
+      "exports": [
+        { "name": "useScroll", "type": "named" }
+      ],
+      "props": {
+        "threshold": { "type": "number", "required": true, "note": "Pixel value — returns true when window.scrollY exceeds this" }
+      },
+      "dependencies": [],
+      "category": "utility",
+      "interactive": true,
+      "webgl": false,
+      "accepts_children": "N/A",
+      "description": "Custom React hook that returns a boolean indicating whether the user has scrolled past the given threshold. Used by header-1 for sticky scroll behavior.",
+      "return_type": "boolean"
+    },
+    {
+      "id": 39,
+      "name": "web-gl-shader",
+      "file": "components/ui/web-gl-shader.tsx",
+      "exports": [
+        { "name": "WebGLShader", "type": "named" }
+      ],
+      "props": {},
+      "dependencies": ["three"],
+      "category": "effect",
+      "interactive": false,
+      "interactive_details": "Auto-animating time-based GLSL shader",
+      "webgl": true,
+      "webgl_details": "Full Three.js WebGL renderer with RawShaderMaterial. Custom vertex + fragment GLSL shaders with uniform controls for xScale, yScale, and distortion. Produces animated sine-wave RGB light lines.",
+      "accepts_children": false,
+      "description": "Full-screen fixed-position canvas with animated sine-wave RGB light lines shader. Uses Three.js RawShaderMaterial with custom vertex and fragment shaders."
+    }
+  ],
+
+  "component_categories": {
+    "button": {
+      "count": 6,
+      "components": ["button", "fey-button", "liquid-button", "liquid-glass-button", "neon-button", "shiny-button"],
+      "description": "Interactive button variants ranging from standard (button) to premium animated (liquid-button, shiny-button)"
+    },
+    "card": {
+      "count": 2,
+      "components": ["card", "card-with-noise-pattern"],
+      "description": "Card container components with composable slots"
+    },
+    "layout": {
+      "count": 3,
+      "components": ["accordion", "badge", "logo-cloud-3"],
+      "description": "Layout primitives for content organization"
+    },
+    "navigation": {
+      "count": 6,
+      "components": ["21st-navbar", "docks", "header-1", "menu-toggle-icon", "pricing-tab", "tubelight-navbar"],
+      "description": "Navigation components from full headers to tab selectors"
+    },
+    "hero": {
+      "count": 3,
+      "components": ["background-paths", "hero-shutter-text", "shape-landing-hero"],
+      "description": "Full-screen hero section components with dramatic animations"
+    },
+    "animation": {
+      "count": 3,
+      "components": ["container-scroll-animation", "infinite-slider", "text-scramble"],
+      "description": "Scroll and motion animation wrappers"
+    },
+    "effect": {
+      "count": 6,
+      "components": ["animated-shiny-text", "glowing-effect", "shader-animation", "shader-lines", "spotlight", "web-gl-shader"],
+      "description": "Visual effects — decorative overlays, shaders, glows"
+    },
+    "pricing": {
+      "count": 3,
+      "components": ["modal-pricing", "pricing-card", "pricing-section"],
+      "description": "Complete pricing flow: section → cards → modal confirmation"
+    },
+    "form": {
+      "count": 3,
+      "components": ["label", "radio-group", "sign-in-flow-1"],
+      "description": "Form inputs and complete sign-in flow"
+    },
+    "utility": {
+      "count": 1,
+      "components": ["use-scroll"],
+      "description": "React hooks"
+    },
+    "social": {
+      "count": 1,
+      "components": ["social-links"],
+      "description": "Social media link components"
+    },
+    "3d": {
+      "count": 1,
+      "components": ["splite"],
+      "description": "3D scene embedding via Spline"
+    }
+  },
+
+  "webgl_components": {
+    "count": 5,
+    "entries": [
+      { "file": "shader-animation.tsx", "engine": "Three.js (npm)", "method": "ShaderMaterial + GLSL" },
+      { "file": "shader-lines.tsx", "engine": "Three.js (CDN r89)", "method": "ShaderMaterial + GLSL (mosaic)" },
+      { "file": "web-gl-shader.tsx", "engine": "Three.js (npm)", "method": "RawShaderMaterial + GLSL (sine lines)" },
+      { "file": "sign-in-flow-1.tsx", "engine": "@react-three/fiber", "method": "R3F Canvas + GLSL3 dot matrix" },
+      { "file": "splite.tsx", "engine": "@splinetool/react-spline", "method": "Spline 3D scene URL" }
+    ]
+  },
+
+  "dependency_map": {
+    "framer-motion": ["background-paths", "card-with-noise-pattern", "container-scroll-animation", "hero-shutter-text", "infinite-slider", "liquid-button", "pricing-tab", "shape-landing-hero", "sign-in-flow-1", "social-links", "text-scramble", "tubelight-navbar"],
+    "three": ["shader-animation", "web-gl-shader", "sign-in-flow-1"],
+    "@react-three/fiber": ["sign-in-flow-1"],
+    "@splinetool/react-spline": ["splite"],
+    "@radix-ui/react-accordion": ["accordion"],
+    "@radix-ui/react-dialog": ["dialog"],
+    "@radix-ui/react-label": ["label"],
+    "@radix-ui/react-radio-group": ["radio-group"],
+    "@radix-ui/react-slot": ["button", "liquid-glass-button"],
+    "@radix-ui/react-icons": ["accordion"],
+    "class-variance-authority": ["badge", "button", "label", "liquid-glass-button", "neon-button"],
+    "lucide-react": ["dialog", "docks", "hero-shutter-text", "modal-pricing", "pricing-card", "radio-group", "shape-landing-hero", "tubelight-navbar"],
+    "@number-flow/react": ["pricing-card"],
+    "next-themes": ["fey-button"],
+    "next/link": ["sign-in-flow-1", "tubelight-navbar"],
+    "react-use-measure": ["infinite-slider"],
+    "motion/react": ["glowing-effect"],
+    "clsx": ["21st-navbar"],
+    "@/lib/utils": ["21st-navbar", "accordion", "animated-shiny-text", "background-paths", "badge", "button", "card-with-noise-pattern", "card", "container-scroll-animation", "dialog", "glowing-effect", "label", "liquid-button", "liquid-glass-button", "logo-cloud-3", "menu-toggle-icon", "neon-button", "shape-landing-hero", "sign-in-flow-1", "social-links", "spotlight", "tubelight-navbar"]
+  },
+
+  "pages": {
+    "app/page.tsx": "Root landing page",
+    "app/dental/page.tsx": "Dental clinic premium landing page (~2660 lines, uses 15+ components)",
+    "app/gym/page.tsx": "Gym landing page variant",
+    "app/components/page.tsx": "Full-screen interactive component showcase (all 38 components, 100vh sections)",
+    "app/demo/page.tsx": "Demo page",
+    "app/demo/calendar/page.tsx": "Calendar booking demo",
+    "app/demo/sign-in/": "Sign-in demo (uses sign-in-flow-1)",
+    "app/demo/gym/": "Gym demo variant"
+  },
+
+  "import_patterns": {
+    "standard_import": "import { ComponentName } from '@/components/ui/filename'",
+    "default_import_components": ["hero-shutter-text (default export)", "docks (default export)"],
+    "alias_required": {
+      "shader-lines": "import { ShaderAnimation as ShaderLines } from '@/components/ui/shader-lines' — conflicts with shader-animation.tsx export name"
+    },
+    "naming_convention": "PascalCase for components, camelCase for hooks, kebab-case for files"
+  },
+
+  "composition_examples": {
+    "hero_section": {
+      "description": "Premium hero with spotlight, text scramble, and CTA",
+      "components": ["Spotlight", "TextScramble", "GoldShinyButton", "BackgroundPaths"],
+      "pattern": "BackgroundPaths as bg → Spotlight overlay → TextScramble for headings → GoldShinyButton CTA"
+    },
+    "pricing_flow": {
+      "description": "Complete pricing with tabs and modal",
+      "components": ["PricingSection", "PricingCard", "Tab", "ModalPricing"],
+      "pattern": "PricingSection(tiers, frequencies) → auto-renders Tab + PricingCard grid → ModalPricing for plan selection"
+    },
+    "interactive_card": {
+      "description": "Card with glow effect and hover lift",
+      "components": ["NoisePatternCard", "GlowingEffect"],
+      "pattern": "relative parent → GlowingEffect(variant='gold') as first child → NoisePatternCard with content"
+    },
+    "navigation": {
+      "description": "Dual navigation setup",
+      "components": ["Header", "NavBar"],
+      "pattern": "Header (sticky top, desktop links + mobile menu) + NavBar (fixed bottom pill on mobile)"
+    }
+  }
+}
