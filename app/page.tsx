@@ -954,7 +954,7 @@ export default function LandingPage() {
 
           <div className="gold-rule mb-8" />
           <p className="text-center text-[#F8F6F3]/18 text-xs">
-            © {new Date().getFullYear()} Koushik AI Automation. MedSpa Revenue Recovery Engine™ — All rights reserved.
+            © {new Date().getFullYear()} MedSpa Revenue Recovery Engine™ — All rights reserved.
           </p>
         </div>
       </footer>

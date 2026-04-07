@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { Watermark } from "@/components/ui/watermark";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,7 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Koushik AI Automation — MedSpa Revenue Recovery Engine™",
+  title: "MedSpa Revenue Recovery Engine™ — AI Automation for Medical Aesthetic Clinics",
   description:
     "Revenue Recovery Systems for Medical Aesthetic Clinics. AI-powered automation that converts missed inbound leads into booked high-ticket patients within 60 seconds — built exclusively for med spas.",
 };
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         {children}
+        <Watermark />
       </body>
     </html>
   );

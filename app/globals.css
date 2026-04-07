@@ -195,6 +195,33 @@
 ::-webkit-scrollbar-thumb { background: rgba(198,167,94,0.3); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #C6A75E; }
 
+/* ── Focus visible (Accessibility — Priority 1) ────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(198,167,94,0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Tactile button feedback (UI/UX Pro Max — Interactive) ──────────────────── */
+button:active, a:active, [role="button"]:active {
+  transform: scale(0.98) translateY(1px);
+}
+
+/* ── Reduced motion support (Accessibility) ────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Section divider — subtle gold separator ───────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent 5%, rgba(198,167,94,0.12) 50%, transparent 95%);
+}
+
 /* ── Shiny Gold Button ──────────────────────────────────────────────────────── */
 @property --sgb-angle {
   syntax: "<angle>";

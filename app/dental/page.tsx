@@ -2643,25 +2643,14 @@ function FooterSection() {
             border: "1px solid rgba(198,167,94,0.2)",
             background: "rgba(198,167,94,0.05)",
           }}>
-            ⚡ Demo built by{" "}
+            ⚡ Premium demo experience{" "}
             <a
               href="#"
               style={{ color: C.gold, textDecoration: "none", fontWeight: 600 }}
               onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
               onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
             >
-              Koushik AI Automation
-            </a>
-            {" "}| Want one like this? DM{" "}
-            <a
-              href="https://instagram.com/koushik_ai_automation"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: C.gold, textDecoration: "none", fontWeight: 600 }}
-              onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
-              onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
-            >
-              @koushik_ai_automation
+              Koushik Dev
             </a>
           </p>
         </div>

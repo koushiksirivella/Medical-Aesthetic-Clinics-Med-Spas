@@ -87,7 +87,7 @@ export default function DemoCalendarPage() {
                 </div>
                 <div>
                   <p className="text-[#F8F6F3]/90 font-semibold text-sm">Revenue Strategy Session</p>
-                  <p className="text-[#F8F6F3]/40 text-xs">Koushik AI Automation — Private Demo</p>
+                  <p className="text-[#F8F6F3]/40 text-xs">Private Strategy Session — By Invitation</p>
                 </div>
               </div>
 
